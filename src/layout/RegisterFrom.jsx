@@ -3,14 +3,17 @@ import { useState } from "react";
 
 export default function RegisterForm() {
     const [input, setInput] = useState({
+        firstName: '',
+        lastName:'',
         username: '',
         password: '',
         confirmPassword: '',
-        email: ''
+        email: '',
+        phone: ''
     })
 
     const hdlChange = e => {
-        setInput(prv => ({ ...prv, [e.target.name] : e.target.Value }))
+        setInput(prv => ({ ...prv, [e.target.name] : e.target.value }))
     }
 
     const hdlSubmit = async e => {
@@ -31,16 +34,42 @@ export default function RegisterForm() {
 }
 
     return (
-        <div className="p-5 border w-4/6 min-w-[500px] mx-auto rounded mt-5 ">
-            <div className="text-3xl">Register Form</div>
-            <form className="flex flex-col gap-2" onSubmit={hdlSubmit}>
+        <div className="p-5 border w-2/6 min-w-[500px] mx-auto rounded mt-14 flex flex-col items-center bg-white">
+            <div className="text-3xl mb-6">Sign up</div>
+            <form className="flex flex-col gap-2 " onSubmit={hdlSubmit}>
+            <label className="form-control w-full max-w-xs ">
+                    <div className="label">
+                        <span label-text>First Name</span>
+                    </div>
+                    <input
+                        type="text"
+                        placeholder="first name"
+                        className="input input-bordered w-full max-w-xs"
+                        name="firstName"
+                        value={input.firstName}
+                        onChange={hdlChange}
+                    />
+                </label>
+            <label className="form-control w-full max-w-xs flex flex-1">
+                    <div className="label">
+                        <span label-text>Last Name</span>
+                    </div>
+                    <input
+                        type="lastName"
+                        placeholder="last name"
+                        className="input input-bordered w-full max-w-xs"
+                        name="username"
+                        value={input.lastName}
+                        onChange={hdlChange}
+                    />
+                </label>
                 <label className="form-control w-full max-w-xs">
                     <div className="label">
                         <span label-text>Username</span>
                     </div>
                     <input
                         type="text"
-                        placeholder="Type here"
+                        placeholder="username"
                         className="input input-bordered w-full max-w-xs"
                         name="username"
                         value={input.username}
@@ -53,7 +82,7 @@ export default function RegisterForm() {
                     </div>
                     <input
                         type="email"
-                        placeholder="Type here"
+                        placeholder="email"
                         className="input input-bordered w-full max-w-xs"
                         name="email"
                         value={input.email}
@@ -66,7 +95,7 @@ export default function RegisterForm() {
                     </div>
                     <input
                         type="password"
-                        placeholder="Type here"
+                        placeholder="password"
                         className="input input-bordered w-full max-w-xs"
                         name="password"
                         value={input.password}
@@ -79,14 +108,14 @@ export default function RegisterForm() {
                     </div>
                     <input
                         type="password"
-                        placeholder="Type here"
+                        placeholder="confirm password"
                         className="input input-bordered w-full max-w-xs"
                         name="confirmPassword"
                         value={input.confirmPassword}
                         onChange={hdlChange}
                     />
                 </label>
-                <button className="btn btn-outline btn-info mt-7">Sign up</button>
+                <button className="btn btn-outline btn-info mt-7 w-full max-w-xs">Sign up</button>
             </form>
         </div>
     )
