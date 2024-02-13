@@ -14,7 +14,6 @@ export default function NewTodoForm() {
   const hdlSubmit = async e => {
     try{
       e.preventDefault()
-      // setInput(prv => ({...prv, dueDate: new Date(prv.dueDate) }))
       const output = { ...input, dueDate: new Date(input.dueDate) }
       const token = localStorage.getItem('token')
       const rs = await axios.post('http://localhost:8000/todos', output, {

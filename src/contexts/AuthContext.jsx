@@ -13,7 +13,7 @@ function AuthContextProvider(props) {
         setLoading(true)
         let token = localStorage.getItem('token')
         if(!token) { return }
-        const rs = await axios.get('http://localhost:8889/auth/me', {
+        const rs = await axios.get('http://localhost:8000/auth/me', {
           headers : { Authorization : `Bearer ${token}` }
         })
         setUser(rs.data)

@@ -1,12 +1,14 @@
 import {createBrowserRouter, RouterProvider, Outlet} from 'react-router-dom'
 import LoginForm from '../layout/LoginForm'
-import RegisterForm from '../layout/RegisterForm'
+import RegisterForm from '../layout/RegisterFrom'
 import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
 import UserHome from '../layout/UserHome'
 import NewTodoForm from '../layout/NewTodoForm'
 
+
 const guestRouter = createBrowserRouter([
+
   {
     path: '/',
     element: <>
@@ -33,7 +35,7 @@ const userRouter = createBrowserRouter([
     ]
   }
 ])
-
+    
 export default function AppRouter() {
   const {user} = useAuth()
   const finalRouter = user?.id ? userRouter : guestRouter

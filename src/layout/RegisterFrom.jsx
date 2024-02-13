@@ -55,24 +55,24 @@ export default function RegisterForm() {
                         <span label-text>Last Name</span>
                     </div>
                     <input
-                        type="lastName"
+                        type="text"
                         placeholder="last name"
                         className="input input-bordered w-full max-w-xs"
-                        name="username"
+                        name="lastName"
                         value={input.lastName}
                         onChange={hdlChange}
                     />
                 </label>
                 <label className="form-control w-full max-w-xs">
                     <div className="label">
-                        <span label-text>Username</span>
+                        <span label-text>Phone</span>
                     </div>
                     <input
-                        type="text"
-                        placeholder="username"
+                        type="number"
+                        placeholder="phone"
                         className="input input-bordered w-full max-w-xs"
-                        name="username"
-                        value={input.username}
+                        name="phone"
+                        value={input.phone}
                         onChange={hdlChange}
                     />
                 </label>
@@ -86,6 +86,19 @@ export default function RegisterForm() {
                         className="input input-bordered w-full max-w-xs"
                         name="email"
                         value={input.email}
+                        onChange={hdlChange}
+                    />
+                </label>
+                <label className="form-control w-full max-w-xs">
+                    <div className="label">
+                        <span label-text>Username</span>
+                    </div>
+                    <input
+                        type="text"
+                        placeholder="username"
+                        className="input input-bordered w-full max-w-xs"
+                        name="username"
+                        value={input.username}
                         onChange={hdlChange}
                     />
                 </label>
@@ -115,7 +128,7 @@ export default function RegisterForm() {
                         onChange={hdlChange}
                     />
                 </label>
-                <button className="btn btn-outline btn-info mt-7 w-full max-w-xs">Sign up</button>
+                <button type="submit" className="btn btn-outline btn-info mt-7 w-full max-w-xs">Sign up</button>
             </form>
         </div>
     )
