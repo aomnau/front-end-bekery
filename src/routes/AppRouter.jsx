@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
 import UserHome from '../layout/UserHome'
 import NewTodoForm from '../layout/NewTodoForm'
+import Homepage from '../layout/Homepage'
 
 
 const guestRouter = createBrowserRouter([
@@ -16,7 +17,8 @@ const guestRouter = createBrowserRouter([
       <Outlet />
     </>,
     children: [
-      { index: true, element: <LoginForm /> },
+      { index: true, element: <Homepage />},
+      { path: '/login', element: <LoginForm /> },
       { path: '/register', element: <RegisterForm />}
     ]
   }

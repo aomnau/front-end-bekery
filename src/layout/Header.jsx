@@ -2,7 +2,8 @@ import {Link, useNavigate} from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 
 const guestNav = [
-  { to : '/', text: 'Login' },
+  { to : '/', text: 'Homepage'},
+  { to : '/login', text: 'Login' },
   { to : '/register', text: 'Register' },
 ]
 
