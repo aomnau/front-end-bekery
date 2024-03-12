@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Hello, {user?.id ? user.username : 'Guest'}</a>
+        <a className="btn btn-ghost text-xl">Bekerry {user?.id ? user.username : ''}</a>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">

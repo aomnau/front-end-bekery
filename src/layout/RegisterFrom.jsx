@@ -34,102 +34,104 @@ export default function RegisterForm() {
 }
 
     return (
-        <div className="p-5 border w-2/6 min-w-[500px] mx-auto rounded mt-14 flex flex-col items-center bg-white">
-            <div className="text-3xl mb-6">Sign up</div>
-            <form className="flex flex-col gap-2 " onSubmit={hdlSubmit}>
-            <label className="form-control w-full max-w-xs ">
+        <div style={{ backgroundColor: 'rgb(36,92,116)', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="p-10 border w-2/6 min-w-[100px] mx-auto    items-center bg-white " style={{ borderRadius: '30px' }} >
+            <div className="text-3xl mb-6 text-center" >Sign up</div>
+            <form className="flex flex-col gap-2 justify-center items-center" onSubmit={hdlSubmit}>
+            <label className="form-control w-full max-w-md ">
                     <div className="label">
                         <span label-text>First Name</span>
                     </div>
                     <input
                         type="text"
                         placeholder="first name"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="firstName"
                         value={input.firstName}
                         onChange={hdlChange}
                     />
                 </label>
-            <label className="form-control w-full max-w-xs flex flex-1">
+            <label className="form-control w-full max-w-md ">
                     <div className="label">
                         <span label-text>Last Name</span>
                     </div>
                     <input
                         type="text"
                         placeholder="last name"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="lastName"
                         value={input.lastName}
                         onChange={hdlChange}
                     />
                 </label>
-                <label className="form-control w-full max-w-xs">
+                <label className="form-control w-full max-w-md">
                     <div className="label">
                         <span label-text>Phone</span>
                     </div>
                     <input
                         type="number"
                         placeholder="phone"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="phone"
                         value={input.phone}
                         onChange={hdlChange}
                     />
                 </label>
-                <label className="form-control w-full max-w-xs">
+                <label className="form-control w-full max-w-md">
                     <div className="label">
                         <span label-text>Email</span>
                     </div>
                     <input
                         type="email"
                         placeholder="email"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="email"
                         value={input.email}
                         onChange={hdlChange}
                     />
                 </label>
-                <label className="form-control w-full max-w-xs">
+                <label className="form-control w-full max-w-md">
                     <div className="label">
                         <span label-text>Username</span>
                     </div>
                     <input
                         type="text"
                         placeholder="username"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="username"
                         value={input.username}
                         onChange={hdlChange}
                     />
                 </label>
-                <label className="form-controll w-full max-w-xs">
+                <label className="form-controll w-full max-w-md">
                     <div className="label">
                         <span className="label-text">Password</span>
                     </div>
                     <input
                         type="password"
                         placeholder="password"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="password"
                         value={input.password}
                         onChange={hdlChange}
                     />
                 </label>
-                <label className="form-controll w-full max-w-xs">
+                <label className="form-controll w-full max-w-md">
                     <div className="label">
                         <span className="label-text">Confirm Password</span>
                     </div>
                     <input
                         type="password"
                         placeholder="confirm password"
-                        className="input input-bordered w-full max-w-xs"
+                        className="input input-bordered w-full "
                         name="confirmPassword"
                         value={input.confirmPassword}
                         onChange={hdlChange}
                     />
                 </label>
-                <button type="submit" className="btn btn-outline btn-info mt-7 w-full max-w-xs">Sign up</button>
+                <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-full max-w-md hover:bg-sky-500 hover:border-sky-500 hover:text-white">Sign up</button>
             </form>
+        </div>
         </div>
     )
 }

@@ -32,9 +32,10 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="p-5 border w-4/6 min-w-[500px] mx-auto rounded mt-5 ">
-      <div className="text-3xl mb-5">Please Login</div>
-      <form className="flex flex-col gap-2" onSubmit={hdlSubmit}>
+    <div style={{ backgroundColor: 'rgb(36,92,116)', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <div className="p-10 border w-1/5 min-w-[100px]  mx-auto items-center bg-white " style={{ borderRadius: '30px' }} >
+      <div className="text-3xl mb-5 text-center">Login</div>
+      <form className="flex flex-col gap-2 justify-center items-center " onSubmit={hdlSubmit}>
         <label className="form-control w-full max-w-xs">
           <div className="label">
             <span className="label-text">username</span>
@@ -60,11 +61,9 @@ export default function LoginForm() {
             onChange={ hdlChange }
           />
         </label>
-
-        <div className="flex gap-5 ">
-          <button type="submit" className="btn btn-outline btn-info mt-7">Login</button>
-        </div>
+          <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-full max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white">Login</button>
       </form>
+    </div>
     </div>
   );
 }
