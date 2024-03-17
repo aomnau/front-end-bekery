@@ -3,13 +3,12 @@ import LoginForm from '../layout/LoginForm'
 import RegisterForm from '../layout/RegisterFrom'
 import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
-import UserHome from '../layout/UserHome'
+import Home from '../layout/Home'
 import NewTodoForm from '../layout/NewTodoForm'
-import Homepage from '../layout/Homepage'
+
 
 
 const guestRouter = createBrowserRouter([
-
   {
     path: '/',
     element: <>
@@ -17,8 +16,7 @@ const guestRouter = createBrowserRouter([
       <Outlet />
     </>,
     children: [
-      { index: true, element: <Homepage />},
-      { path: '/login', element: <LoginForm /> },
+      { index: true, element: <LoginForm /> },
       { path: '/register', element: <RegisterForm />}
     ]
   }
@@ -32,7 +30,7 @@ const userRouter = createBrowserRouter([
       <Outlet />
     </>,
     children : [
-      { index: true, element: <UserHome /> },
+      { index: true, element: <Home /> },
       { path: '/new', element: <NewTodoForm />}
     ]
   }

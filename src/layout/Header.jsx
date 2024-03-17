@@ -1,9 +1,9 @@
+import React, { useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
 
 const guestNav = [
-  { to : '/', text: 'Homepage'},
-  { to : '/login', text: 'Login' },
+  { to : '/', text: 'Login' },
   { to : '/register', text: 'Register' },
 ]
 
@@ -14,9 +14,15 @@ const userNav = [
 
 export default function Header() {
   const {user, logout} = useAuth()
-  const finalNav = user?.id ? userNav : guestNav
+  const finalNav = user?.id ? userNav : guestNav;
+  
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
   const hdlLogout = () => {
     logout()
@@ -25,8 +31,17 @@ export default function Header() {
 
   return (
     <div className="navbar bg-base-100">
+            <div>
+        <input
+          type="text"
+          placeholder="Search..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="input input-bordered"
+        />
+      </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">Bekerry {user?.id ? user.username : ''}</a>
+        <a className="flex-1 btn btn-ghost text-xl">Bekerry {user?.id ? user.username : ''}</a>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
