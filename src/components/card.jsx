@@ -1,40 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-function BakeryComponent(props) {
-    const [bekery, setBekery] = useState([]);
+const BakeryComponent = () => {
+  const [bakeryData, setBakeryData] = useState([]);
 
+  useEffect(() => {
+    fetchBakeryData();
+  }, []);
 
-    useEffect(() => {
-      fetchData(); 
-    }, []);
+  const fetchBakeryData = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/bekery/showbekery'); 
+      setBakeryData(response.data);
+    } catch (error) {
+      console.error('เกิดข้อผิดพลาดในการโหลดข้อมูล bakery:', error);
+    }
+  };
 
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/bekery/showbekery');
-                setBekery(response.data); 
-            } catch (err) {
-                console.log ('เกิดข้อผิดพลาดในการดึงข้อมูล bakery:', err);
-            }
-        };
-
-       
-
-    // if (!bakery) {
-    //     return <div>กำลังโหลดข้อมูล...</div>;
-    // }
-
-    return (
+  return (
+    <div>
+      <h1>รายการ Bakery</h1>
       <div>
-      {bekery.map(item =>(
-        <div key={item.id}>
-            <img src={item.image_bekery} alt="bekery" />
-            <h2>{item.bekeryname}</h2>
-            <p>{item.description}</p>
-        </div>
+        {bakeryData.map(bakery => (
+          <div key={bakery.id}>
+            <img src={bakery.image_bakery} alt={bakery.bekeryname} />
+            <h2>{bakery.bekeryname}</h2>
+            <p>{bakery.description}</p>
+          </div>
         ))}
-        </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default BakeryComponent;
