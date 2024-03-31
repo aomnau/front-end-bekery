@@ -1,38 +1,45 @@
 import React, { useState } from 'react';
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const guestNav = [
-  { to : '/', text: 'Login' },
-  { to : '/register', text: 'Register' },
-]
+  { to: '/', text: 'Login' },
+  { to: '/register', text: 'Register' },
+];
+
+const homeNav = [
+  { to: '/', text: 'Home' }
+];
 
 const userNav = [
-  { to : '/', text: 'Home' },
-  { to : '/new', text: 'New Todo' },
-]
+  { to: '/new', text: 'Cart' }
+];
 
-export default function Header() {
-  const {user, logout} = useAuth()
+export default function Header({ searchTerm, handleSearchChange }) {
+  const { user, logout } = useAuth();
   const finalNav = user?.id ? userNav : guestNav;
-  
+  const fiaNav = user?.id ? homeNav : guestNav;
+
   const navigate = useNavigate();
 
-  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
 
   const hdlLogout = () => {
-    logout()
-    navigate('/')
-  }
+    logout();
+    navigate('/');
+  };
 
   return (
-    <div className="navbar bg-base-100">
-            <div>
-        <input
+    <div className="navbar bg-base-100 flex justify-between shadow-sm">
+      <div>
+        <ul className="menu menu-horizontal px-10 flex">
+          {fiaNav.map(el => (
+            <li key={el.to}>
+              <Link to={el.to}>{el.text}</Link>
+            </li>
+          ))}
+        </ul>
+        <input style={{borderRadius: '100px'}}
           type="text"
           placeholder="Search..."
           value={searchTerm}
@@ -40,21 +47,22 @@ export default function Header() {
           className="input input-bordered"
         />
       </div>
-      <div className="flex-1">
-        <a className="flex-1 btn btn-ghost text-xl">Bekerry {user?.id ? user.username : ''}</a>
+      <div className="flex-1 flex justify-center">
+        <Link to="/" className="text-xl">Bekerry</Link>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal px-1">
-          { finalNav.map( el => (
-            <li key={el.to} >
+        <ul className="menu menu-horizontal px-14 flex">
+          {finalNav.map(el => (
+            <li key={el.to}>
               <Link to={el.to}>{el.text}</Link>
             </li>
           ))}
-          { user?.id && (
-            <li>
+          <li><span className="mx-2">user.{user.username}</span></li>
+          {user?.id && (
+            <li className="flex items-center mx-2">
               <Link to='#' onClick={hdlLogout}>Logout</Link>
             </li>
-          ) }
+          )}
         </ul>
       </div>
     </div>

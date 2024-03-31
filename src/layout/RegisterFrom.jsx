@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function RegisterForm() {
@@ -35,7 +36,7 @@ export default function RegisterForm() {
 
     return (
         <div style={{ backgroundColor: 'rgb(36,92,116)', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        <div className="p-10 border w-2/6 min-w-[100px] mx-auto    items-center bg-white " style={{ borderRadius: '30px' }} >
+        <div className="p-4 border w-2/6 min-w-[100px] mx-auto    items-center bg-white " style={{ borderRadius: '30px' }} >
             <div className="text-3xl mb-6 text-center" >Sign up</div>
             <form className="flex flex-col gap-2 justify-center items-center" onSubmit={hdlSubmit}>
             <label className="form-control w-full max-w-md ">
@@ -130,6 +131,7 @@ export default function RegisterForm() {
                     />
                 </label>
                 <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-full max-w-md hover:bg-sky-500 hover:border-sky-500 hover:text-white">Sign up</button>
+                <Link to="/" className="text-sky-500 mt-3 hover:underline">Already have an account? Login here</Link>
             </form>
         </div>
         </div>

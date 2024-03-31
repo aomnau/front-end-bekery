@@ -31,7 +31,7 @@ export default function NewTodoForm() {
     >
       <label className="form-control w-full ">
         <div className="label">
-          <span className="label-text">Todo title</span>
+          <span className="label-text">Cart</span>
         </div>
         <input
           type="text"

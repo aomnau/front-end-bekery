@@ -1,15 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Header from './Header';
 import Bekery from '../components/card'
 
 
 export default function Home() {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+
   return (
     <>
-      <div style={{ backgroundColor: 'rgb(36,92,116)', minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+    <Header searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
         <div>
-        <Bekery />
+        <Bekery searchTerm={searchTerm}/>
         </div>
-      </div>
+      
     </>
   )
 }

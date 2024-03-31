@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {useState} from "react";
+import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth'
 
 export default function LoginForm() {
@@ -62,6 +63,7 @@ export default function LoginForm() {
           />
         </label>
           <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-full max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white">Login</button>
+          <Link to="/register" className="btn btn-outline text-sky-500 border-sky-500  mt-1 w-full max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white">Sing up</Link>
       </form>
     </div>
     </div>

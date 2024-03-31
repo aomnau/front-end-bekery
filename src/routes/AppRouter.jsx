@@ -5,6 +5,7 @@ import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
 import Home from '../layout/Home'
 import NewTodoForm from '../layout/NewTodoForm'
+import Product from '../components/product'
 
 
 
@@ -12,7 +13,6 @@ const guestRouter = createBrowserRouter([
   {
     path: '/',
     element: <>
-      <Header />
       <Outlet />
     </>,
     children: [
@@ -31,7 +31,8 @@ const userRouter = createBrowserRouter([
     </>,
     children : [
       { index: true, element: <Home /> },
-      { path: '/new', element: <NewTodoForm />}
+      { path: '/new', element: <NewTodoForm />},
+      { path: '/product/:id', element: <Product />}
     ]
   }
 ])
