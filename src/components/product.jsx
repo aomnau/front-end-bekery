@@ -24,7 +24,7 @@ function Product() {
   }, [bekeryProduct]);
   
   return (
-    <div>
+    <div style={{ marginTop: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       {bekeryProduct && (
         <>
           <img src={`http://localhost:8000/${bekeryProduct.imagebekery}`} alt={bekeryProduct.bekeryname} 
