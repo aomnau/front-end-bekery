@@ -4,8 +4,8 @@ import RegisterForm from '../layout/RegisterFrom'
 import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
 import Home from '../layout/Home'
-import NewTodoForm from '../layout/NewTodoForm'
 import Product from '../components/product'
+import CartBekery from '../layout/CartBekery'
 
 
 
@@ -31,7 +31,7 @@ const userRouter = createBrowserRouter([
     </>,
     children : [
       { index: true, element: <Home /> },
-      { path: '/new', element: <NewTodoForm />},
+      { path: '/new', element: <CartBekery />},
       { path: '/product/:id', element: <Product />}
     ]
   }
