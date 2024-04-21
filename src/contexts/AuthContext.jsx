@@ -6,6 +6,7 @@ const AuthContext = createContext()
 function AuthContextProvider(props) {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [user_id, setUser_id] = useState(null);
 
   useEffect( ()=>{
     const run = async () => {
@@ -28,12 +29,13 @@ function AuthContextProvider(props) {
 
   const logout = () => {
     setUser(null)
+    setUser_id(null);
     localStorage.removeItem('token')
     localStorage.removeItem('status')
   }
 
   return (
-    <AuthContext.Provider value={ {user, setUser, loading, logout} }>
+    <AuthContext.Provider value={ {user, setUser, user_id, setUser_id, loading, logout} }>
       {props.children}
     </AuthContext.Provider>
   )

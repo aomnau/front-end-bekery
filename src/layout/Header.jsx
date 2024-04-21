@@ -12,13 +12,13 @@ const homeNav = [
 ];
 
 const userNav = [
-  { to: '/new', text: 'Cart' }
+  { to: '/cart', text: 'Cart' }
 ];
 
 export default function Header({ searchTerm, handleSearchChange }) {
   const { user, logout } = useAuth();
-  const finalNav = user?.id ? userNav : guestNav;
-  const fiaNav = user?.id ? homeNav : guestNav;
+  const finalNav = user?.user_id ? userNav : guestNav;
+  const fiaNav = user?.user_id ? homeNav : guestNav;
 
   const navigate = useNavigate();
 
@@ -58,7 +58,7 @@ export default function Header({ searchTerm, handleSearchChange }) {
             </li>
           ))}
           <li><span className="mx-2">user.{user.username}</span></li>
-          {user?.id && (
+          {user?.user_id && (
             <li className="flex items-center mx-2">
               <Link to='#' onClick={hdlLogout}>Logout</Link>
             </li>

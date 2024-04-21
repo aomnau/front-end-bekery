@@ -31,8 +31,8 @@ const BakeryComponent = ({ searchTerm }) => {
   };
 
   return (
-    <div style={{ marginTop: '100px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div className='flex flex-wrap' style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto', justifyContent: 'center' }} >
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
+        <div className='flex flex-wrap' style={{ width: '100%', maxWidth: '100vw', overflowX: 'auto', justifyContent: 'center',marginTop: '80px' }} >
         {filteredData.map((bekery) => (
           <Link to={`/product/${bekery.bekery_id}`}>
           <div key={bekery.bekery_id}  style={{ background: '#fff',   width: '280px',margin: '50px' }} >

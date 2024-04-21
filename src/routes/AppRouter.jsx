@@ -5,7 +5,8 @@ import useAuth from '../hooks/useAuth'
 import Header from '../layout/Header'
 import Home from '../layout/Home'
 import Product from '../components/product'
-import CartBekery from '../layout/CartBekery'
+import AddressForm from '../components/AddressForm'
+import Cart from '../components/cart'
 
 
 
@@ -31,15 +32,16 @@ const userRouter = createBrowserRouter([
     </>,
     children : [
       { index: true, element: <Home /> },
-      { path: '/new', element: <CartBekery />},
-      { path: '/product/:id', element: <Product />}
+      { path: '/cart', element: <Cart />},
+      { path: '/product/:id', element: <Product />},
+      {path: '/address', element: <AddressForm />}
     ]
   }
 ])
     
 export default function AppRouter() {
   const {user} = useAuth()
-  const finalRouter = user?.id ? userRouter : guestRouter
+  const finalRouter = user?.user_id ? userRouter : guestRouter
   return (
     <RouterProvider router={finalRouter} />
   )
