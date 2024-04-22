@@ -4,9 +4,6 @@ import { Link, useParams } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
 
 
-
-const initialPrice = 45;
-
 function Product() {
   const [bekeryProduct, setBekeryProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
@@ -68,25 +65,11 @@ function Product() {
 
   const incrementQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
-    setBekeryProduct(prevProduct => ({
-      ...prevProduct,
-      product: prevProduct.product.map(item => ({
-        ...item,
-        price: Math.floor(initialPrice * (quantity + 1))
-      }))
-    }));
   };
-
+  
   const decrementQuantity = () => {
     if (quantity > 1) {
       setQuantity(prevQuantity => prevQuantity - 1);
-      setBekeryProduct(prevProduct => ({
-        ...prevProduct,
-        product: prevProduct.product.map(item => ({
-          ...item,
-          price: Math.floor(initialPrice * (quantity - 1))
-        }))
-      }));
     }
   };
   return (
@@ -101,16 +84,18 @@ function Product() {
             <h2 style={{ fontSize: '20px' }}>{bekeryProduct.bekeryname}</h2>
             <p style={{ fontSize: '16px' }}>{bekeryProduct.description}</p>
             <ul>
-              {bekeryProduct.product.map(product => (
-                <li key={product.product_id} style={{ color: 'red',fontSize: '16px'  }}>${product.price}</li>
-              ))}
+            {bekeryProduct.product.map(product => (
+  <li key={product.product_id} style={{ color: 'red', fontSize: '16px' }}>
+    ${product.price * quantity}
+  </li>
+))}
             </ul>
             <div style={{ display: 'flex', alignItems:'center' }}>
             <Link to={'/address'} style={{ fontSize: '18px'  }} className='hover:underline'>address</Link>
             <div style={{display:''}}>
               {address && Array.isArray(address) && address.map((addressItem, index) => (
                 <div key={index} style={{marginLeft:'20px'}} >
-                  <p>{addressItem.addressline1}{addressItem.addressline2}{addressItem.city}</p>
+                  <p>  {addressItem.addressline1}  {addressItem.addressline2}  {addressItem.city}</p>
                   
                 </div>
               ))}

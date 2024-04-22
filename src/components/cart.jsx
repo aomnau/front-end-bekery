@@ -1,47 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 
 function Cart() {
-  const [cartItems, setCartItems] = useState(null);
-  const {id} = useParams();
+  const [cartItems, setCartItems] = useState([]);
+
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const token = localStorage.getItem('token'); 
-        const response = await axios.get(`http://localhost:8000/bekery/showproduct/${id}`, {
-          headers: { Authorization: `Bearer ${token}` }
+        const token = localStorage.getItem('token');
+        const response = await axios.get('http://localhost:8000/bekery/showcart', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
         });
-        setCartItems(response.data); 
-        console.log(setCartItems)
+        setCartItems(response.data);
       } catch (error) {
         console.error('Error fetching cart items:', error);
       }
     };
 
     fetchCartItems();
-  }, [id]);
+  }, []);
 
   return (
-    <div>
-    <h1>Cart</h1>
-    {cartItems !== null && Array.isArray(cartItems) && cartItems.length > 0 ? (
+    <div style={{ marginTop: '150px' }}>
+      <h1>Shopping Cart</h1>
       <ul>
-        {cartItems.map((item) => (
-          <li key={item.id}>
-            <div>
-              <h3>{item.productName}</h3> {/* ปรับให้เหมาะกับการตอบรับข้อมูลที่ส่งกลับจากเซิร์ฟเวอร์ */}
-              <p>Quantity: {item.quantity}</p> {/* ปรับให้เหมาะกับการตอบรับข้อมูลที่ส่งกลับจากเซิร์ฟเวอร์ */}
-              <p>Price: ${item.price}</p> {/* ปรับให้เหมาะกับการตอบรับข้อมูลที่ส่งกลับจากเซิร์ฟเวอร์ */}
-            </div>
+        {cartItems.map(cartItem => (
+          <li key={cartItem.cart_id}>
+            <h2>{cartItem.product.productName}</h2>
+            <p>Price: ${cartItem.product.price}</p>
+            <p>Quantity: {cartItem.quantity}</p>
+            <p>User ID: {cartItem.user_id}</p>
+            <p>Bekery ID: {cartItem.bekery_id}</p>
+            <p>Product ID: {cartItem.product_id}</p>
+            {/* สร้างปุ่มหรือฟังก์ชันสำหรับลบรายการในตะกร้า */}
+            <button onClick={() => removeFromCart(cartItem.cart_id)}>Remove</button>
           </li>
         ))}
       </ul>
-    ) : (
-      <p>{cartItems !== null ? 'Your cart is empty' : 'Loading...'}</p>
-    )}
-  </div>
-);
+    </div>
+  );
 }
 
 export default Cart;
