@@ -22,23 +22,46 @@ function Cart() {
     fetchCartItems();
   }, []);
 
+  const removeFromCart = async (cartItemId) => {
+    try {
+      const token = localStorage.getItem('token');
+      await axios.post(`http://localhost:8000/bekery/removecart/${cartItemId}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      // ลบรายการออกจากสเตตส์
+      setCartItems(cartItems.filter(item => item.cart_id !== cartItemId));
+    } catch (error) {
+      console.error('Error removing item from cart:', error);
+    }
+  };
+
   return (
-    <div style={{ marginTop: '150px' }}>
-      <h1>Shopping Cart</h1>
-      <ul>
+    <div>
+      <div style={{marginTop:'150px',marginLeft: '14vh'}}>
+      <h1>product</h1>
+      
+      </div>
+      <div>
+      
         {cartItems.map(cartItem => (
-          <li key={cartItem.cart_id}>
-            <h2>{cartItem.product.productName}</h2>
-            <p>Price: ${cartItem.product.price}</p>
-            <p>Quantity: {cartItem.quantity}</p>
-            <p>User ID: {cartItem.user_id}</p>
-            <p>Bekery ID: {cartItem.bekery_id}</p>
-            <p>Product ID: {cartItem.product_id}</p>
-            {/* สร้างปุ่มหรือฟังก์ชันสำหรับลบรายการในตะกร้า */}
-            <button onClick={() => removeFromCart(cartItem.cart_id)}>Remove</button>
-          </li>
+          <div key={cartItem.cart_id} style={{display:'flex',alignItems:'center'}}>
+            <div style={{   marginLeft: '10vh', marginTop: '20px',}}>
+            <hr style={{ width: '100%', borderTop: '1px solid black', margin: '0 10px 0 0'}} />
+            <img src={`http://localhost:8000/${cartItem.product.bekery.imagebekery}`} alt="รูปภาพ" style={{ width: '150px', height: '150px', background: 'rgb(36,92,116)', padding: '10px', marginBottom: '10px', borderRadius: '10px',marginTop:'10px' }}/>
+            </div>
+            <div style={{marginLeft: '10px',display:'flex'}}>
+            <p> {cartItem.product?.bekery?.bekeryname}</p>
+            <p> ${cartItem.product.price}</p>
+            <p> {cartItem.quantity}</p>
+            <button onClick={() => removeFromCart(cartItem.cart_id)}>ลบ</button>
+            </div>
+            
+          </div>
         ))}
-      </ul>
+      </div>
+      <hr style={{ width: '100%', borderTop: '1px solid black', margin: '0 10px 0 0'}} />
     </div>
   );
 }

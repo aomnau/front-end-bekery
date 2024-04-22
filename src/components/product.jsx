@@ -90,9 +90,9 @@ function Product() {
   </li>
 ))}
             </ul>
-            <div style={{ display: 'flex', alignItems:'center' }}>
+            <div style={{ marginTop:'5px',display:'flex', alignItems:'center' }}>
             <Link to={'/address'} style={{ fontSize: '18px'  }} className='hover:underline'>address</Link>
-            <div style={{display:''}}>
+            <div>
               {address && Array.isArray(address) && address.map((addressItem, index) => (
                 <div key={index} style={{marginLeft:'20px'}} >
                   <p>  {addressItem.addressline1}  {addressItem.addressline2}  {addressItem.city}</p>
@@ -103,11 +103,11 @@ function Product() {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', marginTop: '15px' }}>
               <h2>Quantity</h2>
-              <button onClick={decrementQuantity} className="btn btn-outline text-sky-500 border-sky-500   hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ marginLeft: '10px', padding: '10px ' }} >-</button>
+              <button onClick={decrementQuantity} className="btn btn-outline text-sky-500 border-sky-500   hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ marginLeft: '10px', width: '15px', height: '15px', padding: '0', minWidth: '24px', minHeight: '24px' }} >-</button>
               <span style={{ margin: '0 10px' }}>{quantity}</span>
-              <button onClick={incrementQuantity} className="btn btn-outline text-sky-500 border-sky-500   hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ padding: '10px ' }} >+</button>
+              <button onClick={incrementQuantity} className="btn btn-outline text-sky-500 border-sky-500   hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ width: '15px', height: '15px', padding: '0', minWidth: '24px', minHeight: '24px' }} >+</button>
             </div>
-            <div style={{ marginTop: '15px' }}>
+            <div style={{ marginTop: '36px' }}>
               <button onClick={() => addToCart(user_id)} className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-28 max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ borderRadius: '100px' }} >Add to cart</button>
               <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-28 max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ borderRadius: '100px', marginLeft: '12px' }} >Buy</button>
             </div>
