@@ -39,30 +39,44 @@ function Cart() {
 
   return (
     <div>
-      <div style={{marginTop:'150px',marginLeft: '14vh'}}>
-      <h1>product</h1>
-      
-      </div>
+      <div className=" flex justify-between " style={{marginTop:'150px',marginLeft: '14vh'}}>
       <div>
-      
+      <h1 className="menu menu-horizontal px-80 flex" >product</h1>
+      </div>
+      <div className="flex-none">
+        <div className="menu menu-horizontal px-96 flex">
+      <h1>Price per piece</h1>
+      <h1 className="mx-10">Quantity</h1>
+      <h1 className="flex items-center mx-2">Total price</h1>
+      </div>
+      </div>
+      </div>
+      <hr style={{ width: '100%', borderTop: '1px solid black', margin: '0 10px 0 0'}} />
+      <div>
         {cartItems.map(cartItem => (
           <div key={cartItem.cart_id} style={{display:'flex',alignItems:'center'}}>
-            <div style={{   marginLeft: '10vh', marginTop: '20px',}}>
-            <hr style={{ width: '100%', borderTop: '1px solid black', margin: '0 10px 0 0'}} />
-            <img src={`http://localhost:8000/${cartItem.product.bekery.imagebekery}`} alt="รูปภาพ" style={{ width: '150px', height: '150px', background: 'rgb(36,92,116)', padding: '10px', marginBottom: '10px', borderRadius: '10px',marginTop:'10px' }}/>
+            <div style={{   marginLeft: '41vh', marginTop: '20px',}}>
+            <img src={`http://localhost:8000/${cartItem.product.bekery.imagebekery}`} alt="รูปภาพ" style={{ width: '150px', height: '150px', background: 'rgb(36,92,116)', padding: '10px', marginBottom: '10px', borderRadius: '10px',}}/>
             </div>
             <div style={{marginLeft: '10px',display:'flex'}}>
             <p> {cartItem.product?.bekery?.bekeryname}</p>
+            <div>
+              <div style={{marginLeft: '10px',display:'flex'}} >
             <p> ${cartItem.product.price}</p>
             <p> {cartItem.quantity}</p>
             <button onClick={() => removeFromCart(cartItem.cart_id)}>ลบ</button>
             </div>
-            
+            </div> 
+            </div> 
           </div>
         ))}
+        <div>
+        </div>
+        
       </div>
       <hr style={{ width: '100%', borderTop: '1px solid black', margin: '0 10px 0 0'}} />
     </div>
+    
   );
 }
 
