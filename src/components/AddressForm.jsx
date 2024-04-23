@@ -33,7 +33,6 @@ const AddAddressForm = () => {
   return (
     <div style={{ marginTop: '150px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
       <form onSubmit={handleSubmit} style={{ width: '400px', border: '1px solid #ccc', padding: '20px', borderRadius: '5px' }}>
-        <h2>Add Address</h2>
         {error && <p style={{ color: 'red', marginBottom: '10px' }}>{error}</p>}
         <div style={{ marginBottom: '10px' }}>
           <label htmlFor="addressline1">Address Line 1:</label>
