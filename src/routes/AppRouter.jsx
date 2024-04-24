@@ -7,7 +7,8 @@ import Home from '../layout/Home'
 import Product from '../components/product'
 import AddressForm from '../components/AddressForm'
 import Cart from '../components/cart'
-
+import Order from '../components/order'
+import Showorder from '../components/showorder'
 
 
 const guestRouter = createBrowserRouter([
@@ -34,7 +35,10 @@ const userRouter = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: '/cart', element: <Cart />},
       { path: '/product/:id', element: <Product />},
-      {path: '/address', element: <AddressForm />}
+      {path: '/address', element: <AddressForm />},
+      {path: '/order/:id', element: <Order />},
+      {path: '/showorder', element: <Showorder />}
+
     ]
   }
 ])

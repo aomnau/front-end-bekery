@@ -11,6 +11,7 @@ function Product() {
   const [address, setAddress] = useState(null);
   const [cartItems, setCartItems] = useState([]);
   const { user_id } = useContext(AuthContext);
+  
 
 
   useEffect(() => {
@@ -44,6 +45,27 @@ function Product() {
       }
     }
   };
+
+  const buyProduct = async () => {
+    if (bekeryProduct) {
+      try {
+        const token = localStorage.getItem('token');
+        const response = await axios.post(
+          'http://localhost:8000/bekery/addorderdetail',
+          {
+            product_id: bekeryProduct.product[0].product_id,
+            quantity: quantity
+          },
+          { headers: { Authorization: `Bearer ${token}` } }
+        );
+        console.log('Product purchased:', response.data.result);
+        // Redirect or show a success message as needed
+      } catch (error) {
+        console.error('Error purchasing product:', error);
+      }
+    }
+  };
+
 
   useEffect(() => {
     const fetchAddress = async () => {
@@ -109,7 +131,7 @@ function Product() {
             </div>
             <div style={{ marginTop: '36px' }}>
               <button onClick={() => addToCart(user_id)} className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-28 max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ borderRadius: '100px' }} >Add to cart</button>
-              <button type="submit" className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-28 max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ borderRadius: '100px', marginLeft: '12px' }} >Buy</button>
+              <Link to={`/order/${bekeryProduct.bekery_id}`} className="btn btn-outline text-sky-500 border-sky-500  mt-7 w-28 max-w-xs hover:bg-sky-500 hover:border-sky-500 hover:text-white" style={{ borderRadius: '100px', marginLeft: '12px' }} onClick={buyProduct} >Buy</Link>
             </div>
             <div style={{ marginTop: '20px' }}>
               <hr style={{ width: '100%', borderTop: '1px solid black' }} />
